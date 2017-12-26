@@ -64,7 +64,24 @@ end
 
 def draw?(board)
   if full?(board) == true
-    
+    WIN_COMBINATIONS.each do |win_combination|
+      win_combination.each do |win_index|
+        win_index_1 = win_combination[0]
+        win_index_2 = win_combination[1]
+        win_index_3 = win_combination[2]
+
+        position_1 = board[win_index_1]
+        position_2 = board[win_index_2]
+        position_3 = board[win_index_3]
+
+        if position_1 == "X" && position_2 == "X" && position_3 == "X"
+          win_index = [win_index_1, win_index_2, win_index_3]
+          return win_index
+        elsif position_1 == "O" && position_2 == "O" && position_3 == "O"
+          win_index = [win_index_1, win_index_2, win_index_3]
+          return win_index
+        end
+      end
   else
     false
   end
